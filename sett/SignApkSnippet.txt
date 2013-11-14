@@ -1,0 +1,7 @@
+git clone https://android.googlesource.com/platform/build.git -b android-4.0.3_r1
+
+java -jar signapk.jar platform.x509.pem platform.pk8 Settings.apk Settings_signed.apk
+
+adb uninstall tru.ruinevpo.test
+adb install Settings_test_signed.apk
+adb shell am instrument -w tru.ruinevpo.test/android.test.InstrumentationTestRunner
